@@ -1,4 +1,4 @@
-# page-pagination
+# vue-practice
 
 ## Project setup
 ```
