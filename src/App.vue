@@ -1,32 +1,46 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div>
+    <app-header :title="title" @changeTitle="updateTitle($event)" />
+
+    <app-ninjas :ninjas="ninjas" />
+    <hr />
+    <app-ninjas :ninjas="ninjas" />
+
+    <app-footer :title="title" />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Ninjas from "./components/Ninjas";
+export default {
+  components: {
+    "app-header": Header,
+    "app-footer": Footer,
+    "app-ninjas": Ninjas
+  },
+  data() {
+    return {
+      ninjas: [
+        { id: 1, name: "Ryan", specialty: "Vue Component", show: false },
+        { id: 2, name: "Cras", specialty: "HTML Wizard", show: false },
+        { id: 3, name: "Ryan", specialty: "Click Event", show: false },
+        { id: 4, name: "Ryan", specialty: "Conditiional", show: false },
+        { id: 5, name: "Ryan", specialty: "Webpack Component", show: false },
+        { id: 6, name: "Ryan", specialty: "Data Digging", show: false }
+      ],
 
-#nav {
-  padding: 30px;
-}
+      title: "Vue Ninja Banky"
+    };
+  },
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  methods: {
+    updateTitle(updatedTitle) {
+      this.title = updatedTitle;
+    }
+  }
+};
+</script>
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style lang="css" scoped></style>
